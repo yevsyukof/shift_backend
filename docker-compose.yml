@@ -1,0 +1,17 @@
+version: "3.9"
+
+networks:
+  backend_tier:
+    driver: bridge
+    name: mynet
+
+services:
+  rest_server:
+    container_name: rest_server
+    build:
+      context: .
+      dockerfile: ./build/Dockerfile
+    networks:
+      - backend_tier
+    ports:
+      - "8080:8080"
